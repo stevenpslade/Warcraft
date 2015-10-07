@@ -9,12 +9,12 @@ describe Unit do
   describe "#attack!" do
     it "should attack (deal damage) when unit is alive" do
       enemy = Unit.new(30, 10)
-      expect(enemy).to receive(:damage).with(10)
       @unit.attack!(enemy)
+      expect(enemy.health_points).to eq(20)
     end
 
     it "should not attack (deal damage) when unit is dead" do
-      enemy = Unit.new(30, 10)
+      enemy = Unit.new(0, 10)
       expect(@unit).to receive(:health_points).and_return(0)
       expect(@unit.attack!(enemy)).to eq("You can't kill what's already dead!")
     end

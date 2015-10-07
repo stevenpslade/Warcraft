@@ -13,8 +13,6 @@ class SeigeEngine < Unit
   def attack!(enemy)
     if enemy.is_a?(Barracks)
       enemy.damage(@attack_power * 2)
-    elsif !(enemy.is_a?(SeigeEngine))
-      enemy.damage(@attack_power * 0)
     elsif enemy.is_a?(SeigeEngine)
       super
     end

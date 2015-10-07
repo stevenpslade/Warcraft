@@ -21,13 +21,13 @@ describe Footman do
 describe "#attack!"
   it "should deal half their set AP when against barracks" do
     enemy = Barracks.new
-    expect(enemy).to receive(:damage).with(5)
     @footman.attack!(enemy)
+    expect(enemy.health_points).to eq(495)
   end
 
   it "should deal normal AP against enemies that are no Barracks" do
     enemy = Footman.new
-    expect(enemy).to receive(:damage).with(10)
     @footman.attack!(enemy)
+    expect(enemy.health_points).to eq(50)
   end
 end
