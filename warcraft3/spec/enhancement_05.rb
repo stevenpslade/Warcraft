@@ -58,21 +58,18 @@ describe SeigeEngine do
   describe "#attack!" do
     it "should deal double their set AP when against barracks" do
       enemy = Barracks.new
-      # expect(enemy).to receive(:damage).twice.with(100)
       @seige_engine.attack!(enemy)
       expect(enemy.health_points).to eq(400)
     end
 
     it "should deal 0 damage against other units (that are not seige units)" do
       enemy = Footman.new
-      # expect(enemy).to receive(:damage).twice.with(0)
       @seige_engine.attack!(enemy)
       expect(enemy.health_points).to eq(60)
     end
 
     it "should deal normal attack power against other seige units" do
       enemy = SeigeEngine.new
-      # expect(enemy).to receive(:damage).twice.with(50)
       @seige_engine.attack!(enemy)
       expect(enemy.health_points).to eq(350)
     end
